@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page info="ⓒcopyright jgh0609@gmail.com" %> %> %>
+<%@ page info="ⓒcopyright jgh0609@gmail.com" %>
 <!DOCTYPE html>
 <html>
 	<head>
