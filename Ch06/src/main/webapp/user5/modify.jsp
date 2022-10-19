@@ -6,6 +6,8 @@
 <%@page import="bean.User5Bean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+
+
 	request.setCharacterEncoding("UTF-8");
 	String name = request.getParameter("name");
 	User5Bean ub = null;
@@ -17,12 +19,12 @@
 		ResultSet rs = psmt.executeQuery();
 		
 		if(rs.next()){
-			ub = new User5Bean();
-			ub.setName(rs.getString(1));
-			ub.setBirth(rs.getString(2));
-			ub.setAge(rs.getInt(3));
-			ub.setAddress(rs.getString(4));
-			ub.setHp(rs.getString(5));
+	ub = new User5Bean();
+	ub.setName(rs.getString(1));
+	ub.setBirth(rs.getString(2));
+	ub.setAge(rs.getInt(3));
+	ub.setAddress(rs.getString(4));
+	ub.setHp(rs.getString(5));
 		}
 		
 		psmt.close();
@@ -31,7 +33,6 @@
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-
 %>    
 <!DOCTYPE html>
 <html>

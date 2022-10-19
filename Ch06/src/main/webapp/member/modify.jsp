@@ -28,6 +28,8 @@
 			mb.setName(rs.getString(2));
 			mb.setHp(rs.getString(3));
 			mb.setPos(rs.getString(4));
+			mb.setDep(rs.getInt(5));
+			mb.setRdate(rs.getString(6));
 		}
 		conn.close();
 	}catch(Exception e){

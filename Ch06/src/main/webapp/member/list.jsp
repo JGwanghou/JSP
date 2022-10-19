@@ -28,6 +28,7 @@
 			mb.setHp(rs.getString(3));
 			mb.setPos(rs.getString(4));
 			mb.setDep(rs.getInt(5));
+			mb.setRdate(rs.getString(6));
 			
 			members.add(mb);
 		}
@@ -66,8 +67,28 @@
 					<td><%= mb.getName() %></td>
 					<td><%= mb.getHp() %></td>
 					<td><%= mb.getPos() %></td>
-					<td><%  mb.getDep(); %></td>
-					
+					<td>
+						<% 
+							switch(mb.getDep()){
+							case 101:
+								out.println("영업1부");
+								break;
+							case 102:
+								out.println("영업2부");
+								break;
+							case 103:
+								out.println("영업3부");
+								break;
+							case 104:
+								out.println("인사부");
+								break;
+							case 105:
+								out.println("영업지원부");
+								break;
+							}
+						%>
+					</td>
+					<td><%= mb.getRdate().substring(2, 10) %></td>
 					<td>
 						<a href="./modify.jsp?uid=<%= mb.getUid() %>">수정</a>
 						<a href="./delete.jsp?uid=<%= mb.getUid() %>">삭제</a>

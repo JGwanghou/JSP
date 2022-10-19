@@ -7,7 +7,7 @@ public class MemberBean {
 	private String hp;
 	private String pos;
 	private int dep;
-
+	private String rdate;
 	
 	public String getUid() {
 		return uid;
@@ -38,6 +38,12 @@ public class MemberBean {
 	}
 	public void setDep(int dep) {
 		this.dep = dep;
+	}
+	public String getRdate() {
+		return rdate;
+	}
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
 	}
 	
 }

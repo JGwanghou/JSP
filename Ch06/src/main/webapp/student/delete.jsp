@@ -1,12 +1,25 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="Config.DB"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-    
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-	</head>
-	<body>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String stdNo = request.getParameter("stdNo");
+
+	try{
+		Connection conn = DB.getInstance().getConnection();
+		String sql = "delete from `student` where `stdNo`=?";
+		PreparedStatement psmt = conn.prepareStatement(sql);
+		psmt.setString(1, stdNo);
 		
-	</body>
-</html>
+		psmt.executeUpdate();
+		
+		conn.close();
+		psmt.close();
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	
+	response.sendRedirect("./list.jsp");
+%>

@@ -1,7 +1,9 @@
 
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// 전송 데이터수신
@@ -13,15 +15,14 @@
 	String age = request.getParameter("age");
 	
 	// 데이터베이스 처리
-	String host = "jdbc:mysql://127.0.0.1:3306/java2db";
-	String user = "root";
-	String pass = "1234";
 	
 	try{
 		// 1단계
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		// 2단계
-		Connection conn = DriverManager.getConnection(host, user, pass);
+		Context initCtx = new InitialContext();
+		Context ctx = (Context)initCtx.lookup("java:comp/env");
+		
+		DataSource ds = (DataSource)ctx.lookup("dbcp_java2db");
+		Connection conn = ds.getConnection();
 		// 3단계
 		String sql = "INSERT INTO `user3` VALUES (?,?,?,?)";
 		PreparedStatement psmt = conn.prepareStatement(sql);

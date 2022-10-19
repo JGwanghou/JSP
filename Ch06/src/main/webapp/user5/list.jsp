@@ -8,6 +8,7 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+
 	List<User5Bean> users = new ArrayList<>();
 
 	try{
@@ -30,7 +31,6 @@
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-
 %>    
 <!DOCTYPE html>
 <html>
