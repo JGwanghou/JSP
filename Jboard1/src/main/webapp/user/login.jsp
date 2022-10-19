@@ -2,7 +2,7 @@
 <%@ include file="./_header.jsp" %>
         <main id="user">
             <section class="login">
-                <form action="/Jboard1/list.jsp">
+                <form action="#">
                     <table border="0">
                         <tr>
                             <td><img src="/Jboard1/img/login_ico_id.png" alt="아이디"/></td>
@@ -20,7 +20,7 @@
                     <p>
                         아직 회원이 아니시면 회원으로 가입하세요.
                     </p>
-                    <a href="/Jboard1/terms.jsp">회원가입</a>
+                    <a href="/Jboard1/user/terms.jsp">회원가입</a>
                 </div>
             </section>
         </main>
