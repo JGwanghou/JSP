@@ -7,7 +7,7 @@ function register(){
 	$(function(){
 		
 		$('section').empty();
-					$('nav').empty().append("<h4>user2 등록</h4><a href='#' id='userList'>user2 목록</a>");
+		$('nav').empty().append("<h4>user2 등록</h4><a href='#' id='userList'>user2 목록</a>");
 					
 					let table  = "<table border='1'>";
 						table += "<tr>";
