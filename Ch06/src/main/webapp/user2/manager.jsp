@@ -63,8 +63,8 @@
 			
 			// user2 수정화면
 			$(document).on('click', '.userModify', function(e){
-				e.preventDefault();				
-				let user = $(this).parent().parent().children('td');
+				e.preventDefault();
+				let user = $(this).parent().parent().children('td').text();
 				modify(user);
 			});
 			
@@ -84,22 +84,18 @@
 				
 				$.ajax({
 					url:'./data/modify.jsp',
-					type:'post',
+					method:'post',
 					data:jsonData,
 					dataType:'json',
 					success: function(data){
-						if(result == 1){
+						if(data.result == 1){
 							alert('수정 완료!');
-							
 						}else{
 							alert('수정 실패!');
 						}
-						list();
 					}
-				});
-				
-			})
-			
+				})
+			});
 			// user2 삭제
 			$(document).on('click', '.userDelete', function(){
 				let uid = $(this).parent().parent().children('td:eq(0)').text();

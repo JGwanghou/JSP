@@ -1,6 +1,6 @@
+<%@page import="Config.DBCP"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="Config.DBCP"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>

@@ -1,6 +1,6 @@
+<%@page import="Config.DBCP2"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="Config.DBCP2"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	// 전송 데이터 수신

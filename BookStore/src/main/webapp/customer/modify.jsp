@@ -1,7 +1,7 @@
+<%@page import="Config.DBCP2"%>
 <%@page import="Bean.CustomerBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="Config.DBCP2"%>
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%

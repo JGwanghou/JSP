@@ -1,7 +1,7 @@
+<%@page import="Config.DBCP"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="Config.DBCP"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
