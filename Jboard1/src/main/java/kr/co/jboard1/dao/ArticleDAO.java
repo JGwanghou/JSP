@@ -314,9 +314,9 @@ public class ArticleDAO {
 		try {
 			Connection conn = DBCP.getConnection();
 			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
-			psmt.setString(1, no);
-			psmt.setString(2, title);
-			psmt.setString(3, content);
+			psmt.setString(1, title);
+			psmt.setString(2, content);
+			psmt.setString(3, no);
 			
 			psmt.executeUpdate();
 			psmt.close();

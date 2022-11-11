@@ -29,6 +29,7 @@
 	ub.setZip(zip);
 	ub.setAddr1(addr1);
 	ub.setAddr2(addr2);
+	ub.setRegip(regip);
 	
 	UserDAO udao = UserDAO.getInstance();
 	udao.insertUser(ub);
