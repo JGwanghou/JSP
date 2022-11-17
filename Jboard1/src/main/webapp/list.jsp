@@ -38,8 +38,6 @@
 		lastPageNum = (total / 10) + 1;
 	}
 	
-	
-	
 	// 현재 페이지 게시물 limit 시작 값 계산
 	if(pg != null){
 		currentPage = Integer.parseInt(pg);
@@ -47,7 +45,6 @@
 	limitStart = (currentPage - 1) * 10;
 	
 	// 페이지 그룹 계산
-	
 	pageGroupCurrent = (int)Math.ceil(currentPage / 10.0);
 	pageGroupStart = (pageGroupCurrent - 1) * 10 + 1;
 	pageGroupEnd = pageGroupCurrent * 10;
