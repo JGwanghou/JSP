@@ -16,8 +16,33 @@ public class User2DAO extends DBHelper{
 	private User2DAO () {}
 	
 	// 기본 CRUD
-	public void insertUser() {}
-	public void selectUser2() {}
+	public void insertUser2(User2VO vo) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement("INSERT INTO `user2` VALUES (?, ?, ?, ?)");
+			psmt.setString(1, vo.getUid());
+			psmt.setString(2, vo.getName());
+			psmt.setString(3, vo.getHp());
+			psmt.setInt(4, vo.getAge());
+			psmt.executeUpdate();
+			
+			close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void selectUser2() {
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select * from `user2` where `uid`=?");
+			
+			close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public List<User2VO> selectUser2s() {
 		List<User2VO> user2 = new ArrayList<>();
 		try {
