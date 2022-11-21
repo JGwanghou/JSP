@@ -4,14 +4,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user2 :: modify</title>
+		<title>user3 :: modify</title>
 	</head>
 	<body>
 		<h3>user 수정</h3>
-		<a href="#">처음으로</a>
-		<a href="/Ch09/user2/list.do">user 목록</a>
+		<a href="/Ch09/">처음으로</a>
+		<a href="/Ch09/user3/list.do">user 목록</a>
 		
-		<form action="/Ch09/user2/modify.do" method="post">
+		<form action="/Ch09/user3/modify.do" method="post">
 		
 			<table border="1">
 			

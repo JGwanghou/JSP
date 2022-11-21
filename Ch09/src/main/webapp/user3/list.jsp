@@ -4,12 +4,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user2 :: list</title>
+		<title>user3 :: list</title>
 	</head>
 	<body>
-		<h3>user 목록</h3>
-		<a href="#">처음으로</a>
-		<a href="/Ch09/user2/register.do">user 등록</a>
+		<h3>user3 목록</h3>
+		<a href="/Ch09/">처음으로</a>
+		<a href="/Ch09/user3/register.do">user 등록</a>
 		
 		<table border="1">
 			<tr>
@@ -20,15 +20,15 @@
 				<th>관리</th>
 			</tr>
 			
-			<c:forEach var="user2" items="${ requestScope.user2 }">
+			<c:forEach var="user3" items="${ requestScope.users3 }">
 			<tr>
-				<td>${ user2.uid }</td>
-				<td>${ user2.name }</td>
-				<td>${ user2.hp }</td>
-				<td>${ user2.age }</td>
+				<td>${ user3.uid }</td>
+				<td>${ user3.name }</td>
+				<td>${ user3.hp }</td>
+				<td>${ user3.age }</td>
 				<td>
-					<a href="/Ch09/user2/modify.do?uid=${ user2.uid }">수정</a>
-					<a href="/Ch09/user2/delete.do?uid=${ user2.uid }">삭제</a>
+					<a href="/Ch09/user2/modify.do?uid=${ user3.uid }">수정</a>
+					<a href="/Ch09/user2/delete.do?uid=${ user3.uid }">삭제</a>
 				</td>
 			</tr>
 			</c:forEach>
