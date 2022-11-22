@@ -36,7 +36,9 @@ public enum UserService {
 		return dao.selectTerms();
 	}
 	
-	public void selectUser() {}
+	public UserVO selectUser(String uid, String pass) {
+		return dao.selectUser(uid, pass);
+	}
 	
 	public void selectUsers() {}
 	

@@ -29,7 +29,8 @@ public class RegisterController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uid	 = req.getParameter("uid");
-		String pass	 = req.getParameter("pass");
+		String pass1 = req.getParameter("pass1");
+		String pass2 = req.getParameter("pass2");
 		String name	 = req.getParameter("name");
 		String nick	 = req.getParameter("nick");
 		String email = req.getParameter("email");
@@ -41,8 +42,9 @@ public class RegisterController extends HttpServlet{
 		
 		UserVO vo = new UserVO();
 		vo.setUid(uid);
-		vo.setPass(pass);
+		vo.setPass(pass1);
 		vo.setName(name);
+		vo.setNick(nick);
 		vo.setEmail(email);
 		vo.setHp(hp);
 		vo.setZip(zip);
@@ -52,7 +54,7 @@ public class RegisterController extends HttpServlet{
 		
 		service.insertUser(vo);
 		
-		resp.sendRedirect("/list.do");
+		resp.sendRedirect("/Jboard2/user/login.do");
 		
 	}
 }
