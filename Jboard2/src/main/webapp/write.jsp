@@ -2,8 +2,7 @@
 <jsp:include page="./_header.jsp"/>
         <main id="board">
             <section class="write">
-
-                <form action="#">
+				<form action="#">
                     <table border="0">
                         <caption>글쓰기</caption>
                         <tr>

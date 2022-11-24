@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="./_header.jsp"/>
+
         <main id="board">
             <section class="list">                
                 <form action="#">
@@ -9,6 +10,7 @@
                 
                 <table border="0">
                     <caption>글목록</caption>
+                    
                     <tr>
                         <th>번호</th>
                         <th>제목</th>
@@ -17,11 +19,11 @@
                         <th>조회</th>
                     </tr>                    
                     <tr>
-                        <td>1</td>
-                        <td><a href="./view.html">테스트 제목입니다.[3]</a></td>
-                        <td>길동이</td>
-                        <td>20-05-12</td>
-                        <td>12</td>
+                        <td>${articles.no}</td>
+                        <td>${articles.title}</td>
+                        <td>${articles.nick}</td>
+                        <td>${articles.rdate}</td>
+                        <td>${articles.hit}</td>
                     </tr>
                 </table>
 
@@ -32,9 +34,7 @@
                     <a href="#" class="num">3</a>
                     <a href="#" class="next">다음</a>
                 </div>
-
                 <a href="./write.html" class="btn btnWrite">글쓰기</a>
-                
             </section>
         </main>
 <jsp:include page="./_footer.jsp"/>        
