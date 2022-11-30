@@ -2,11 +2,15 @@ package controller.user2;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.User3DAO;
+import vo.User3VO;
 
 @WebServlet("/user2/modify.do")
 public class ModifyController extends HttpServlet{
@@ -20,8 +24,17 @@ public class ModifyController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uid = req.getParameter("uid");
 		
+		User3VO vo3 = User3DAO.getInstance().selectUser3s(uid);
+		req.setAttribute("vo3", vo3);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/user2/modify.jsp");
+		dispatcher.forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String uid	 = req.getParameter("uid");
+		String name	 = req.getParameter("name");
+		String hp	 = req.getParameter("hp");
+		String age	 = req.getParameter("age");
 	}
 }

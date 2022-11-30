@@ -10,7 +10,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,7 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.jboard2.vo.UserVO;
 
-@WebFilter("/*")
 public class LoginCheckFilter implements Filter{
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -44,13 +42,20 @@ public class LoginCheckFilter implements Filter{
 		
 		String uri = req.getRequestURI();
 		
+		HttpSession sess = req.getSession();
+		UserVO sessUser = (UserVO)sess.getAttribute("sessUser");
+		
 		if(uriList.contains(uri)) {
-			
-			HttpSession sess = req.getSession();
-			UserVO sessUser = (UserVO)sess.getAttribute("sessUser");
-			
+		
+			// 로그인을 하지 않았을 경우
 			if(sessUser == null) {
 				((HttpServletResponse) response).sendRedirect("/Jboard2/user/login.do");
+				return;
+			}
+			
+		}else if(uri.contains("/user/login.do")) {
+			if(sessUser != null) {
+				((HttpServletResponse) response).sendRedirect("/Jboard2/list.do");
 				return;
 			}
 		}

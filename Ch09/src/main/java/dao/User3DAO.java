@@ -56,7 +56,27 @@ public class User3DAO extends DBHelper {
 		}
 		return users3;
 	}
-	public void selectUser3s() {}
+	public User3VO selectUser3s(String uid) {
+		User3VO vo3 = null;
+		try {
+			logger.debug("selectUser3 uid...");
+			conn = getConnection();
+			psmt = conn.prepareStatement("select * from `user3` where `uid`=?");
+			psmt.setString(1, uid);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo3 = new User3VO();
+				vo3.setUid(rs.getString(1));
+				vo3.setName(rs.getString(2));
+				vo3.setHp(rs.getString(3));
+				vo3.setAge(rs.getString(4));
+			}
+			close();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return vo3;
+	}
 	public void updateUser3() {}
 	public void deleteUser3() {}
 }

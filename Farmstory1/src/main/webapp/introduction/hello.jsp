@@ -8,7 +8,7 @@
 
             <ul class="lnb">
                 <li class="on"><a href="./hello.jsp">인사말</a></li>
-                <li><a href="./direction.jsp">찾아오시는 길</a></li>
+                <li><a href="/Farmstory2/introduction/direction.jsp">찾아오시는 길</a></li>
             </ul>
 
         </aside>
