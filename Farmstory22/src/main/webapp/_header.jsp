@@ -34,7 +34,7 @@
             <p>
                 <a href="#">HOME |</a>
                 <a href="#">로그인 |</a>
-                <a href="#">회원가입 |</a>
+                <a href="/Farmstory22/user/terms.do">회원가입 |</a>
                 <a href="#">고객센터</a>
             </p>
             <img src="/Farmstory22/img/head_txt_img.png" alt="3만원 이상 무료배송"/>

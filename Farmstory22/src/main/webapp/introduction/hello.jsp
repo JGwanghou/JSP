@@ -8,7 +8,7 @@
 
                     <ul class="lnb">
                         <li class="on"><a href="./hello.html">인사말</a></li>
-                        <li><a href="./direction.html">찾아오시는 길</a></li>
+                        <li><a href="./direction.do">찾아오시는 길</a></li>
                     </ul>
 
                 </aside>
