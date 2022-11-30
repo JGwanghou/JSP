@@ -1,5 +1,6 @@
 package kr.co.farmstory2.dao;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,52 @@ public class ArticleDAO extends DBHelper{
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	public void insertArticle() {}
+	public int insertArticle(ArticleVO vo) {
+		int parent = 0;
+		try {
+			logger.debug("insertArticle...");
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			
+			psmt = conn.prepareStatement(Sql.INSERT_ARTICLE);
+			Statement stmt = conn.createStatement();
+			psmt.setString(1, vo.getTitle());
+			psmt.setString(2, vo.getContent());
+			psmt.setInt(3, vo.getFname() == null ? 0 : 1);
+			psmt.setString(4, vo.getUid());
+			psmt.setString(5, vo.getRegip());
+			psmt.executeUpdate();
+			
+			rs = stmt.executeQuery(Sql.SELECT_MAX_NO);
+			conn.commit();
+			
+			if(rs.next()){
+				parent = rs.getInt(1);
+			}
+			close();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return parent;
+	}
+	
+	public void insertFile(int parent, String newName, String fname) {
+		try{
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.INSERT_FILE);
+			psmt.setInt(1, parent);
+			psmt.setString(2, newName);
+			psmt.setString(3, fname);
+			
+			psmt.executeUpdate();
+			
+			psmt.close();
+			conn.close();			
+		}catch(Exception e){
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+	}
 	
 	public void selectArticle() {}
 	

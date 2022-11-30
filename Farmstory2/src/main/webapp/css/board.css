@@ -1,5 +1,4 @@
-@charset "EUC-KR";
-/* ±Û¸ñ·Ï */
+/* ê¸€ëª©ë¡ */
 #board > .list {
     position: relative;
     width: 720px;
@@ -73,7 +72,7 @@
     padding: 6px;
 }
 
-/* ±Û¾²±â */
+/* ê¸€ì“°ê¸° */
 #board > .write {
     width: 720px;
     height: auto;            
@@ -119,7 +118,7 @@
     margin-top: 10px;
 }
 
-/* ±Ûº¸±â */
+/* ê¸€ë³´ê¸° */
 #board > .view {
     width: 720px;
     height: auto;            
@@ -213,7 +212,7 @@
     margin-top: 10px;
 }
 
-/* ±Û¼öÁ¤ */
+/* ê¸€ìˆ˜ì • */
 #board > .modify {
     width: 720px;
     height: auto;            
@@ -259,7 +258,7 @@
     margin-top: 10px;
 }
 
-/* ¹öÆ° °øÅë */
+/* ë²„íŠ¼ ê³µí†µ */
 .btn {
     display: inline-block;
     padding: 8px;    
@@ -289,58 +288,4 @@
     padding: 4px;    
     border: 1px solid #bebebe; 
     text-align: center;
-}
-
-/* ¾ÆÀÌµð, ºñ¹Ð¹øÈ£ Ã£±â °øÅë */
-#user > .find {
-    width: 600px;
-    height: auto;            
-    margin: 60px auto;
-    overflow: hidden;
-}
-#user > .find table {
-    width: 100%;
-    height: auto;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-top: 2px solid #111;
-}
-#user > .find table > caption {
-    text-align: left;
-    font-weight: bold;
-    padding: 10px 0;
-    box-sizing: border-box;
-}
-
-#user > .find table tr > td {
-    padding: 12px;
-    border: 1px solid #e9e9e9;
-    box-sizing: border-box;
-}
-
-#user > .find table tr > td:nth-child(1) {width: 120px;}
-#user > .find table tr > td:nth-child(2) {font-weight: bold;}
-
-#user > .find table input {
-    width: 162px;
-    height: 22px;
-    border: 1px solid #e4eaec;
-    background: #f7f7f7;
-    text-indent: 6px;
-}
-
-#user > .find table div {
-    margin-top: 4px;
-}
-
-
-#user > .find > p {
-    margin-top: 12px;
-    margin-bottom: 12px;
-    line-height: 20px;
-}
-
-#user > .find > div {
-    float: right;
-    margin-top: 10px;
 }
