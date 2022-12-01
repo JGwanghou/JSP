@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="/_header.jsp"/>
+<jsp:include page="../_header.jsp"/>
         <main id="user">
             <section class="login">
-                <form action="/Farmstory22/board/list.do">
+                <form action="/Farmstory22/user/login.do" method="post">
                     <table border="0">
                         <tr>
                             <td><img src="/Farmstory22/img/login_ico_id.png" alt="아이디"/></td>
@@ -16,6 +16,7 @@
                     <input type="submit" value="로그인" class="btnLogin"/>
                     <label><input type="checkbox" name="auto">자동 로그인</label>
                 </form>
+                
                 <div>
                     <h3>회원 로그인 안내</h3>
                     <p>

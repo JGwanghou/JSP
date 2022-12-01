@@ -1,6 +1,5 @@
 package kr.co.farmstory22.dao;
 
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +23,14 @@ public class ArticleDAO extends DBHelper{
 			conn.setAutoCommit(false);
 			
 			psmt = conn.prepareStatement(Sql.INSERT_ARTICLE);
-			Statement stmt = conn.createStatement();
-			psmt.setString(1, vo.getTitle());
-			psmt.setString(2, vo.getContent());
-			psmt.setInt(3, vo.getFname() == null ? 0 : 1);
-			psmt.setString(4, vo.getUid());
-			psmt.setString(5, vo.getRegip());
+			stmt = conn.createStatement();
+			
+			psmt.setString(1, vo.getCate());
+			psmt.setString(2, vo.getTitle());
+			psmt.setString(3, vo.getContent());
+			psmt.setInt(4, vo.getFname() == null ? 0 : 1);
+			psmt.setString(5, vo.getUid());
+			psmt.setString(6, vo.getRegip());
 			psmt.executeUpdate();
 			
 			rs = stmt.executeQuery(Sql.SELECT_MAX_NO);
@@ -63,7 +64,40 @@ public class ArticleDAO extends DBHelper{
 		}
 	}
 	
-	public void selectArticle() {}
+	public ArticleVO selectArticle(String no) {
+		ArticleVO avo = null;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_ARTICLE);
+			psmt.setString(1, no);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				avo = new ArticleVO();
+				avo.setNo(rs.getInt(1));
+				avo.setParent(rs.getInt(2));
+				avo.setComment(rs.getInt(3));
+				avo.setCate(rs.getString(4));
+				avo.setTitle(rs.getString(5));
+				avo.setContent(rs.getString(6));
+				avo.setFile(rs.getInt(7));
+				avo.setHit(rs.getInt(8));
+				avo.setUid(rs.getString(9));
+				avo.setRegip(rs.getString(10));
+				avo.setRdate(rs.getString(11));
+				avo.setFno(rs.getInt(12));
+				avo.setPno(rs.getInt(13));
+				avo.setNewName(rs.getString(14));
+				avo.setOriName(rs.getString(15));
+				avo.setDownload(rs.getInt(16));
+			}
+			close();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return avo;
+	}
 	
 	public List<ArticleVO> selectArticles(int limitStart) {
 		List<ArticleVO> articles = new ArrayList<>();
@@ -99,7 +133,23 @@ public class ArticleDAO extends DBHelper{
 		return articles;
 	}
 	
-	public void updateArticle() {}
+	public void updateArticle(String no, String title, String content) {
+		try {
+			logger.debug("! updateArticle !");
+			
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
+			psmt.setString(1, title);
+			psmt.setString(2, content);
+			psmt.setString(3, no);
+			
+			psmt.executeUpdate();
+			
+			close();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
 	
 	public void deleteArticle() {}
 	

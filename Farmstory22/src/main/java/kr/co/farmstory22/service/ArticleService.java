@@ -31,13 +31,17 @@ public enum ArticleService {
 		dao.insertFile(parent, newName, fname);
 	}
 	
-	public void selectArticle() {}
+	public ArticleVO selectArticle(String no) {
+		return dao.selectArticle(no);
+	}
 	
 	public List<ArticleVO> selectArticles(int limitStart) {
 		return dao.selectArticles(limitStart);
 	}
 	
-	public void updateArticle() {}
+	public void updateArticle(String no, String title, String content) {
+		dao.updateArticle(no, title, content);
+	}
 	
 	public void deleteArticle() {}
 	

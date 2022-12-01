@@ -2,8 +2,8 @@
 <jsp:include page="/_header.jsp"/>
         <main id="board">
             <section class="modify">
-
-                <form action="#">
+                <form action="/Farmstory22/board/modify.do?group=${group}&cate=${cate}&no=${no}" 
+                		method="post" enctype="multipart/form-data">
                     <table border="0">
                         <caption>글수정</caption>
                         <tr>

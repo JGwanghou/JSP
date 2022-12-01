@@ -31,6 +31,11 @@ public enum UserService {
 	public void insertUser(UserVO vo) {
 		dao.insertUser(vo);
 	}
+	
+	public UserVO selectUser(String uid, String pass) {
+		return dao.selectUser(uid, pass);
+	}
+	
 	public int selectCoundUid(String uid) {
 		return dao.selectCountUid(uid);
 	}

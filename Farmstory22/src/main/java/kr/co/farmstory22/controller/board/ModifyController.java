@@ -9,22 +9,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.farmstory22.service.ArticleService;
+
 @WebServlet("/board/modify.do")
 public class ModifyController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	
+	private ArticleService service = ArticleService.INSTANCE;
 	@Override
 	public void init() throws ServletException {
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String group = req.getParameter("group");
+		String cate	 = req.getParameter("cate");
+		String no	 = req.getParameter("no");
+		
+		req.setAttribute("group", group);
+		req.setAttribute("cate", cate);
+		req.setAttribute("no", no);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/modify.jsp");
 		dispatcher.forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String title = req.getParameter("title");
+		String no	 = req.getParameter("no");
+		String content = req.getParameter("content");
+		
+		service.updateArticle(no, title, content);
 	}
 
 }

@@ -1,9 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="/_header.jsp"/>
+<jsp:include page="../_header.jsp"/>
+<jsp:include page="./_${group}.jsp"/>
         <main id="board">
             <section class="write">
-
-                <form action="#">
+                <form action="/Farmstory22/board/write.do?group=${group}&cate=${cate}" method="post" enctype="multipart/form-data">
+                	<input type="hidden" name="group" value="${group}">
+                	<input type="hidden" name="cate" value="${cate}">
+                	<input type="hidden" name="uid" value="${sessUser.uid}">
                     <table border="0">
                         <caption>글쓰기</caption>
                         <tr>
@@ -25,11 +28,11 @@
                     </table>
                     
                     <div>
-                        <a href="./list.do" class="btn btnCancel">취소</a>
+                        <a href="./list.do?group=${group}&cate=${cate}" class="btn btnCancel">취소</a>
                         <input type="submit" value="작성완료" class="btn btnComplete"/>
                     </div>
                 </form>
 
             </section>
         </main>
-<jsp:include page="/_footer.jsp"/>
+<jsp:include page="../_footer.jsp"/>

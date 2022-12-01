@@ -1,6 +1,7 @@
 package kr.co.farmstory22.controller.board;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.farmstory22.service.ArticleService;
+import kr.co.farmstory22.vo.ArticleVO;
+
 @WebServlet("/board/list.do")
 public class ListController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	
+	private ArticleService service = ArticleService.INSTANCE;
 	@Override
 	public void init() throws ServletException {
 	}
@@ -24,11 +28,18 @@ public class ListController extends HttpServlet{
 		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);
 		
+		int limitStart = 0;
+		List<ArticleVO> articles = service.selectArticles(limitStart);
+		req.setAttribute("articles", articles);
+		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/list.jsp");
 		dispatcher.forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 	}
 
 }
