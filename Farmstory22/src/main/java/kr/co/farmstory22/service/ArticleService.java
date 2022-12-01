@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -19,12 +22,18 @@ public enum ArticleService {
 
 	INSTANCE;
 	private ArticleDAO dao;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	private ArticleService() {
 		dao = new ArticleDAO();
 	}
 	
-	public int insertArticle(ArticleVO vo) {
-		return dao.insertArticle(vo);
+	public int insertArticle(ArticleVO article) {
+		 return dao.insertArticle(article);
+	}
+	
+	public ArticleVO insertComment(ArticleVO comment) {
+		return dao.insertComment(comment);
 	}
 	
 	public void insertFile(int parent, String newName, String fname) {
@@ -35,18 +44,31 @@ public enum ArticleService {
 		return dao.selectArticle(no);
 	}
 	
+	public int selectCountTotal(String search) {
+		return dao.selectCountTotal(search);
+	}
+	
 	public List<ArticleVO> selectArticles(int limitStart) {
 		return dao.selectArticles(limitStart);
 	}
 	
-	public void updateArticle(String no, String title, String content) {
-		dao.updateArticle(no, title, content);
+	public List<ArticleVO> selectArticlesByKeyword(String keyword, int limitStart) {
+		return dao.selectArticlesByKeyword(keyword, limitStart);
 	}
 	
-	public void deleteArticle() {}
+	public void updateArticle(String title, String content, String no) {
+		dao.updateArticle(title, content, no);
+	}
 	
+	public void updateHit(String no) {
+		dao.updateHit(no);
+	}
 	
-	// 서비스 로직
+	public void deleteArticle(String no, String parent) {
+		dao.deleteArticle(no, parent);
+	}
+	
+	// 추가적인 서비스 로직
 	public MultipartRequest uploadFile(HttpServletRequest req, String path) throws IOException {
 		
 		int maxSize = 1024 * 1024 * 10;
@@ -68,5 +90,17 @@ public enum ArticleService {
 		f1.renameTo(f2);
 		
 		return newName;
+	}
+	
+	public int[] getPageGroupNum(int currentPage, int lastPageNum) {
+		int pageGroupCurrent = (int)Math.ceil(currentPage / 10.0);
+		int pageGroupStart = (pageGroupCurrent - 1) * 10 + 1;
+		int pageGroupEnd = pageGroupCurrent * 10;
+		
+		if(pageGroupEnd > lastPageNum){
+			pageGroupEnd = lastPageNum;
+		}
+		int[] result = {pageGroupStart, pageGroupEnd, pageGroupCurrent};
+		return result;
 	}
 }

@@ -21,7 +21,7 @@
 					<c:forEach var="article" items="${articles}">                                        
                     <tr>
                         <td>${article.no}</td>
-                        <td><a href="./view.do?group=${group}&${cate}&no=${article.no}">${article.title}[${article.comment}]</a></td>
+                        <td><a href="./view.do?group=${group}&cate=${cate}&no=${article.no}">${article.title}[${article.comment}]</a></td>
                         <td>${article.nick}</td>	
                         <td>${article.rdate}</td>
                         <td>${article.hit}</td>

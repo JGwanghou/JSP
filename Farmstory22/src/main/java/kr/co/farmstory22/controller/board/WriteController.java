@@ -30,13 +30,12 @@ public class WriteController extends HttpServlet{
 		
 		req.setAttribute("group", group);	
 		req.setAttribute("cate", cate);
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/write.jsp");
 		dispatcher.forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
 		ServletContext ctx = req.getServletContext();
 		String path = ctx.getRealPath("/file");
 		MultipartRequest mr = service.uploadFile(req, path);

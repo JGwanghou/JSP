@@ -25,6 +25,7 @@ public class ViewController extends HttpServlet{
 		String group = req.getParameter("group");
 		String cate  = req.getParameter("cate");
 		String no	 = req.getParameter("no");
+		
 		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);
 		req.setAttribute("no", no);
@@ -32,8 +33,8 @@ public class ViewController extends HttpServlet{
 		ArticleVO avo = service.selectArticle(no);
 		req.setAttribute("avo", avo);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/view.jsp");
-		dispatcher.forward(req, resp);
+		req.getRequestDispatcher("/board/view.jsp").forward(req, resp);
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

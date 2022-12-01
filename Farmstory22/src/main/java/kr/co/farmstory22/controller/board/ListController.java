@@ -32,7 +32,6 @@ public class ListController extends HttpServlet{
 		List<ArticleVO> articles = service.selectArticles(limitStart);
 		req.setAttribute("articles", articles);
 		
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/board/list.jsp");
 		dispatcher.forward(req, resp);
 	}
