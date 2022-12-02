@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <main id="board">
             <section class="modify">
-                <form action="/Farmstory22/board/modify.do" method="post" enctype="multipart/form-data">
+                <form action="/Farmstory22/board/modify.do" method="post">
                 	<input type="hidden" name="group" value="${group}"/>
                 	<input type="hidden" name="cate" value="${cate}"/>
                 	<input type="hidden" name="no" value="${no}"/>
@@ -12,12 +12,12 @@
                         <caption>글수정</caption>
                         <tr>
                             <th>제목</th>
-                            <td><input type="text" name="title" placeholder="제목을 입력하세요." value="${aVo.title}"/></td>
+                            <td><input type="text" name="title" placeholder="제목을 입력하세요." value="${article.title}"/></td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="content">${aVo.content}</textarea>
+                                <textarea name="content">${article.content}</textarea>
                             </td>
                         </tr>
                         <tr>

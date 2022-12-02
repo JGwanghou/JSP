@@ -44,6 +44,10 @@ public enum ArticleService {
 		return dao.selectArticle(no);
 	}
 	
+	public List<ArticleVO> selectComments(String parent) {
+		return dao.selectComments(parent);
+	}
+	
 	public int selectCountTotal(String search) {
 		return dao.selectCountTotal(search);
 	}
@@ -54,6 +58,10 @@ public enum ArticleService {
 	
 	public List<ArticleVO> selectArticlesByKeyword(String keyword, int limitStart) {
 		return dao.selectArticlesByKeyword(keyword, limitStart);
+	}
+	
+	public int updateComment(String no, String content) {
+		return dao.updateComment(no, content);
 	}
 	
 	public void updateArticle(String title, String content, String no) {

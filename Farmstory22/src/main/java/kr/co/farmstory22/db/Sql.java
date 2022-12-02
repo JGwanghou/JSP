@@ -84,7 +84,7 @@ public class Sql {
 	public static final String UPDATE_ARTICLE = "update `board_article` set "
 												+"`title`=?,"
 												+"`content`=?,"
-												+"`rdate`=NOW(),"
+												+"`rdate`=NOW() "
 												+"WHERE `no`=?";
 	
 	public static final String UPDATE_ARTICLE_HIT = "UPDATE `board_article` SET `hit` = `hit` + 1 WHERE `no`=?";

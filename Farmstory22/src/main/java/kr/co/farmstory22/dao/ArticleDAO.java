@@ -1,5 +1,6 @@
 package kr.co.farmstory22.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -245,8 +246,72 @@ public class ArticleDAO extends DBHelper{
 		return articles;
 	}
 	
-	public void updateArticle(String title, String content, String no) {
+	public List<ArticleVO> selectComments(String parent) {
+		
+		List<ArticleVO> comments = new ArrayList<>();
+		
 		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_COMMENTS);
+			psmt.setString(1, parent);
+			
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ArticleVO comment = new ArticleVO();
+				comment.setNo(rs.getInt(1));
+				comment.setParent(rs.getInt(2));
+				comment.setComment(rs.getInt(3));
+				comment.setCate(rs.getString(4));
+				comment.setTitle(rs.getString(5));
+				comment.setContent(rs.getString(6));
+				comment.setFile(rs.getInt(7));
+				comment.setHit(rs.getInt(8));
+				comment.setUid(rs.getString(9));
+				comment.setRegip(rs.getString(10));
+				comment.setRdate(rs.getString(11));
+				comment.setNick(rs.getString(12));
+				
+				comments.add(comment);
+			}
+			
+			rs.close();
+			psmt.close();
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		
+		return comments;
+	}
+	
+	public int updateComment(String no, String content) {
+		
+		int result = 0;
+		try {
+			conn = getConnection();
+			psmt =  conn.prepareStatement(Sql.UPDATE_COMMENT);
+			psmt.setString(1, content);
+			psmt.setString(2, no);
+			
+			result = psmt.executeUpdate();
+			
+			close();
+				
+		}catch(Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		
+		return result;
+	}
+	
+	public void updateArticle(String title, String content, String no) {
+		
+		try {
+			logger.debug("updateArticle...");
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
 			psmt.setString(1, title);
