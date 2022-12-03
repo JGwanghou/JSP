@@ -42,7 +42,6 @@
 						article += "</article>";	
 					
 						$('.commentList > .empty').hide();
-						
 						$('.commentList').append(article);
 						textarea.val('');
 					}
@@ -90,7 +89,40 @@
 			}
 		})
 		
-	})
+		$(document).on('click','.remove', function(e){
+			e.preventDefault();
+			
+			let isDeleteOk = confirm('정말 삭제하시겠습니까?');
+			
+			if(isDeleteOk){
+				let no		 = $(this).attr('data-no');
+				let parent	 = $(this).attr('data-parent');
+				let article	 = $(this).closest('article'); // 상위 부모
+				
+				let jsonData = {
+						"no":no,
+						"parent":parent
+				};
+				
+				$.ajax({
+					url:'/Farmstory22/comment/delete.do',
+					method:'get',
+					data:jsonData,
+					dataType:'json',
+					success: function(data){
+						console.log(data);
+						
+						if(data.result == 1){
+							alert('댓글 삭제가 완료 되었어요!');
+							article.hide(); // 새로고침 없이 삭제된거 보임
+						}
+					}
+				})
+			}
+			
+		})// .remove 클릭
+		
+	})// 제이쿼리 메인
 </script>
         <main id="board">
             <section class="view">

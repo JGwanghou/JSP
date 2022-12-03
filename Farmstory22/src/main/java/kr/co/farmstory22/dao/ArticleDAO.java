@@ -346,6 +346,7 @@ public class ArticleDAO extends DBHelper{
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(Sql.DELETE_ARTICLE);
+			
 			psmt.setString(1, no);
 			psmt.setString(2, parent);
 			
@@ -356,6 +357,30 @@ public class ArticleDAO extends DBHelper{
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
+	}
+	
+	public int deleteComment(String no, String parent) {
+		int result = 0;
+		try {
+			logger.debug("deleteComment...");
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			PreparedStatement psmt1 = conn.prepareStatement(Sql.DELETE_COMMENT);
+			PreparedStatement psmt2 = conn.prepareStatement(Sql.UPDATE_ARTICLE_COMMENT_MINUS);
+			psmt1.setString(1, no);
+			
+			psmt2.setString(1, parent);
+			
+			result = psmt1.executeUpdate();
+			psmt2.executeUpdate();
+			
+			conn.commit();
+			
+			close();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
 	}
 	
 }

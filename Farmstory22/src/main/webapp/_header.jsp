@@ -39,6 +39,8 @@
 	                <a href="/Farmstory22/user/terms.do">회원가입 |</a>
                 	</c:when>
                 	<c:otherwise>
+                	<span>${sessUser.nick}님 반갑습니다 |</span>
+                	<a href="/Farmstory22/user/userModify.do">마이페이지 |</a>
                 	<a href="/Farmstory22/user/logout.do">로그아웃 |</a>
                 	</c:otherwise>
                 </c:choose>

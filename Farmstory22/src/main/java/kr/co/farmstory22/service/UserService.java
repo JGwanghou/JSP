@@ -48,6 +48,10 @@ public enum UserService {
 		return dao.selectTerms();
 	}
 	
+	public void updateUserForSessionOut(String uid) {
+		dao.updateUserForSessionOut(uid);
+	}
+	
 	
 	public int[] sendEmailCode(String receiver) {
 		

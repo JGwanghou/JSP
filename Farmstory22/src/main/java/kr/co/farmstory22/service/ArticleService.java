@@ -76,6 +76,10 @@ public enum ArticleService {
 		dao.deleteArticle(no, parent);
 	}
 	
+	public int deleteComment(String no, String parent) {
+		return dao.deleteComment(no, parent);
+	}
+	
 	// 추가적인 서비스 로직
 	public MultipartRequest uploadFile(HttpServletRequest req, String path) throws IOException {
 		

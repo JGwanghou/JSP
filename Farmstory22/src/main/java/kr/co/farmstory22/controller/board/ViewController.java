@@ -51,11 +51,6 @@ public class ViewController extends HttpServlet{
 		String uid = req.getParameter("uid");
 		String content = req.getParameter("content");
 		String regip = req.getRemoteAddr();
-		String group = req.getParameter("group");
-		String cate  = req.getParameter("cate");
-		
-		req.setAttribute("group", group);
-		req.setAttribute("cate", cate);
 		
 		ArticleVO comment = new ArticleVO();
 		comment.setParent(no);

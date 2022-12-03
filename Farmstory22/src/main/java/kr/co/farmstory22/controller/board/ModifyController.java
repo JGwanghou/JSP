@@ -24,9 +24,9 @@ public class ModifyController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		// view.jsp 수정 버튼에서 온 파라미터 받기
-		String no = req.getParameter("no");				// 게시글 번호
-		String group = req.getParameter("group");				// 게시글 번호
-		String cate = req.getParameter("cate");				// 게시글 번호
+		String no = req.getParameter("no");				
+		String group = req.getParameter("group");		
+		String cate = req.getParameter("cate");			
 		req.setAttribute("group", group);
 		req.setAttribute("no", no);
 		req.setAttribute("cate", cate);
@@ -42,7 +42,7 @@ public class ModifyController extends HttpServlet{
 		String group = req.getParameter("group");
 		String cate = req.getParameter("cate");
 		String no	 = req.getParameter("no");				// 게시글 번호
-		String title = req.getParameter("title");						// 게시글 제목
+		String title = req.getParameter("title");			// 게시글 제목
 		String content = req.getParameter("content");
 		
 		ArticleVO aVo = new ArticleVO();

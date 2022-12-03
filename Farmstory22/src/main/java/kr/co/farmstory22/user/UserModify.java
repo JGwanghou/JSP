@@ -2,19 +2,17 @@ package kr.co.farmstory22.user;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import kr.co.farmstory22.service.UserService;
-import kr.co.farmstory22.vo.UserVO;
 
-@WebServlet("/user/logout.do")
-public class LogoutController extends HttpServlet{
+@WebServlet("/user/userModify.do")
+public class UserModify extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	private UserService service = UserService.INSTANCE;
@@ -24,23 +22,9 @@ public class LogoutController extends HttpServlet{
 	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession sess = req.getSession();
-		UserVO sessUser = (UserVO)sess.getAttribute("sessUser");
-		String uid = sessUser.getUid();
 		
-		// 세션 해제
-		sess.removeAttribute(uid);
-		sess.invalidate();
-		
-		// 쿠키 삭제
-		Cookie cookie = new Cookie("sessUser", null);
-		cookie.setPath("/");
-		cookie.setMaxAge(0);
-		resp.addCookie(cookie);
-		
-		service.updateUserForSessionOut(uid);
-		
-		resp.sendRedirect("/Farmstory22/user/login.do?success=119");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/userModify.jsp");
+		dispatcher.forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
