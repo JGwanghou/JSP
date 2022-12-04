@@ -5,9 +5,9 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <main id="user">
             <section class="register">
-                <form action="#" method="post">
+                <form action="/Farmstory22/user/userModify.do" method="post">
                     <table border="1">
-                        <caption>사이트 이용정보 입력</caption>
+                        <caption>회원정보 수정</caption>
                         <tr>
                             <td>아이디</td>
                             <td>
@@ -42,7 +42,7 @@
                             <td>별명</td>
                             <td>
                                 <p class="nickInfo">공백없는 한글, 영문, 숫자 입력</p>
-                                <input type="text" name="nick" placeholder="별명 입력"/>
+                                <input type="text" name="nick" placeholder="별명 입력" value="${sessUser.nick}"/>
                                 <button type="button" id="btnNickCheck"><img src="/Farmstory22/img/chk_id.gif" alt="중복확인"/></button>
                                 <span class="nickResult"></span>
                             </td>
@@ -50,7 +50,7 @@
                         <tr>
                             <td>이메일</td>
                             <td>
-                                <input type="email" name="email" placeholder="이메일 입력"/>
+                                <input type="email" name="email" placeholder="이메일 입력" value="${sessUser.email}"/>
                                 <span class="emailResult"></span>
                                 <button type="button" id="btnEmailAuth"><img src="../img/chk_auth.gif" alt="인증번호 받기"/></button>
                                 <div class="auth">
@@ -62,23 +62,23 @@
                         
                         <tr>
                             <td>휴대폰</td>
-                            <td><input type="text" name="hp" placeholder="휴대폰 입력"/></td>
+                            <td><input type="text" name="hp" placeholder="휴대폰 입력" value="${sessUser.hp}"/></td>
                         </tr>
                         
                         <tr>
                             <td>주소</td>
                             <td>
-                                <input type="text" name="zip" id="zip" placeholder="우편번호"/>
+                                <input type="text" name="zip" id="zip" placeholder="우편번호" value="${sessUser.zip}"/>
                                 <button type="button" onclick="zipcode()"><img src="/Farmstory22/img/chk_post.gif" alt="우편번호찾기"/></button>
-                                <input type="text" name="addr1" id="addr1" placeholder="주소 검색"/>
-                                <input type="text" name="addr2" id="addr2" placeholder="상세주소 입력"/>
+                                <input type="text" name="addr1" id="addr1" placeholder="주소 검색" value="${sessUser.addr1}"/>
+                                <input type="text" name="addr2" id="addr2" placeholder="상세주소 입력" value="${sessUser.addr2}"/>
                             </td>
                         </tr>
                     </table>
 
                     <div>
                         <a href="./index.do" class="btn btnCancel">취소</a>
-                        <input type="submit" value="회원가입" class="btn btnRegister"/>
+                        <input type="submit" value="수정" class="btn btnRegister"/>
                     </div>
 
                 </form>

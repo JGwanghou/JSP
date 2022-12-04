@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.farmstory22.service.UserService;
 
@@ -28,5 +29,15 @@ public class UserModify extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String uid	 = req.getParameter("uid");
+		String pass	 = req.getParameter("pass1");
+		String nick	 = req.getParameter("name");
+		String email = req.getParameter("email");
+		String hp	 = req.getParameter("hp");
+		String zip	 = req.getParameter("zip");
+		String addr1	 = req.getParameter("addr1");
+		String addr2	 = req.getParameter("addr2");
+		
+		service.up
 	}
 }

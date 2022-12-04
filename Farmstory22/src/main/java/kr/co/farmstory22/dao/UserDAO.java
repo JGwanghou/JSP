@@ -209,7 +209,15 @@ public class UserDAO extends DBHelper{
 		return vo;
 	}
 	
-	public void updateUser() {}
+	public void updateUser() {
+		try {
+			logger.debug("updateUser..");
+			conn = getConnection();
+			conn.prepareStatement(Sql.)
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
 	
 	public int updateUserPassWord(String uid, String pass) {
 		
