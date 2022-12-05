@@ -51,7 +51,9 @@ public enum UserService {
 		return dao.selectUserBySessId(sessId);
 	}
 	
-	public void selectUsers() {}
+	public int selectConfirmUser(String uid, String pass) {
+		return dao.selectConfirmUser(uid, pass);
+	}
 		
 	public int selectCountUid(String uid) {
 		return dao.selectCountUid(uid);
@@ -79,7 +81,9 @@ public enum UserService {
 		dao.updateUserForSessionOut(uid);
 	}
 	
-	public void deleteUser() {}
+	public int deleteUser(String uid) {
+		return dao.deleteUser(uid);
+	}
 	
 	public int[] sendEmailCode(String receiver) {
 		

@@ -88,6 +88,27 @@ public class UserDAO extends DBHelper{
 		return vo;
 	}
 	
+	public int selectConfirmUser(String uid, String pass) {
+		int result = 0;
+		try {
+			logger.debug("selectUser...");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.SELECT_USER_PWCONFIRM);
+			psmt.setString(1, uid);
+			psmt.setString(2, pass);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			close();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		
+		return result;
+	}
+	
 	public UserVO selectUserForFindId(String name, String email) {
 		
 		UserVO vo = null;
@@ -135,7 +156,9 @@ public class UserDAO extends DBHelper{
 		return vo;
 	}
 	
-	public void selectUsers() {}
+	public void selectUsers() {
+		
+	}
 	
 	public int selectCountUid(String uid) {
 		int result = 0;
@@ -271,6 +294,31 @@ public class UserDAO extends DBHelper{
 		}
 	}
 	
-	public void deleteUser() {}
+	public void updateRI() {
+		try {
+			logger.debug("update registerInformation...");
+			conn = getConnection();
+		}catch(Exception e) {
+			
+		}
+	}
+	
+	public void updatePI() {}
+	
+	public int deleteUser(String uid) {
+		int result = 0;
+		try {
+			logger.debug("deleteUser..");
+			conn = getConnection();
+			psmt = conn.prepareStatement(Sql.DELETE_USER);
+			psmt.setString(1, uid);
+			result = psmt.executeUpdate();
+			
+			close();
+		}catch(Exception e) {
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
 	
 }

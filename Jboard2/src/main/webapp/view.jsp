@@ -42,6 +42,7 @@
 							article += "</article>";
 						
 							$('.commentList > .empty').hide();
+							
 							$('.commentList').append(article);
 							textarea.val('');
 					}

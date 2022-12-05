@@ -52,6 +52,10 @@ public enum UserService {
 		dao.updateUserForSessionOut(uid);
 	}
 	
+	public void updateUser(UserVO vo) {
+		dao.updateUser(vo);
+	}
+	
 	
 	public int[] sendEmailCode(String receiver) {
 		

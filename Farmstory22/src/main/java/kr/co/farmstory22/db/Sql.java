@@ -23,11 +23,16 @@ public class Sql {
 	public static final String SELECT_USER_FOR_FIND_ID = "select * from `board_user` where `name`=? and `email`=?";	
 	public static final String SELECT_USER_FOR_FIND_PW = "select * from `board_user` where `uid`=? and `email`=?";	
 	public static final String UPDATE_USER = "UPDATE `board_user` SET "
-											+ ""
-											+ ""
-											+ ""
-											+ ""
-											+ ""
+											+ "`uid`=?,"
+											+ "`pass`=SHA2(?, 256),"
+											+ "`nick`=?,"
+											+ "`email`=?,"
+											+ "`hp`=?,"
+											+ "`zip`=?,"
+											+ "`addr1`=?,"
+											+ "`addr2`=?,"
+											+ "`regip`=?,"
+											+ "`rdate`=NOW()";
 	// board
 	public static final String INSERT_ARTICLE = "insert into `board_article` set "
 												+ "`cate`=?,"

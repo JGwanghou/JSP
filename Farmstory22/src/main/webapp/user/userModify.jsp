@@ -11,9 +11,7 @@
                         <tr>
                             <td>아이디</td>
                             <td>
-                                <input type="text" name="uid" placeholder="아이디 입력" value="${sessUser.uid}"/>
-                                <button type="button" id="btnIdCheck"><img src="/Farmstory22/img/chk_id.gif" alt="중복확인"/></button>
-                                <span class="uidResult"></span>
+                                <input type="text" name="uid" placeholder="아이디 입력" readonly value="${sessUser.uid}"/>
                             </td>
                         </tr>
                         <tr>
